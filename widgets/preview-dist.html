@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Analytics Components - Production Preview</title>
+  <style>
+    :root { color-scheme: light dark; }
+    body {
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Arial;
+      margin: 0;
+      padding: 2rem;
+      background: #f5f5f5;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+      color: #333;
+    }
+    h2 {
+      font-size: 1.5rem;
+      margin-top: 3rem;
+      margin-bottom: 1rem;
+      color: #444;
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 0.5rem;
+    }
+    .component-card {
+      background: white;
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .description {
+      color: #666;
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    }
+    .component-wrapper {
+      min-height: 500px;
+    }
+    code {
+      background: #f0f0f0;
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.9em;
+    }
+    .info-box {
+      background: #e8f5e9;
+      border-left: 4px solid #4caf50;
+      padding: 1rem;
+      margin-bottom: 2rem;
+      border-radius: 4px;
+    }
+    .info-box h3 {
+      margin-top: 0;
+      color: #2e7d32;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Analytics Components - Production Preview</h1>
+    <div class="info-box">
+      <h3>✅ Production Build Preview</h3>
+      <p>This page loads components from the <code>dist/</code> folder - exactly as they'll work in your Jekyll blog.</p>
+      <p><strong>To use:</strong></p>
+      <ol>
+        <li>Run <code>npm run build</code> to build components</li>
+        <li>Run <code>npm run preview</code> to serve this page</li>
+        <li>Or open this file directly (use a local server like <code>python3 -m http.server</code>)</li>
+      </ol>
+    </div>
+
+    <h2>Population Chart</h2>
+    <div class="component-card">
+      <p class="description">
+        Log-log scatter plot comparing country population to unique website visits.
+      </p>
+      <div class="component-wrapper">
+        <div id="population-chart-root"></div>
+      </div>
+    </div>
+
+    <h2>Geography Charts</h2>
+    <div class="component-card">
+      <p class="description">
+        Multiple visualizations showing YouTube views and site analytics across different countries.
+      </p>
+      <div class="component-wrapper">
+        <div id="geography-charts-root"></div>
+      </div>
+    </div>
+
+    <h2>Interactive Counter Widget</h2>
+    <div class="component-card">
+      <p class="description">
+        A simple React counter demonstrating state management.
+      </p>
+      <div class="component-wrapper" style="min-height: auto; padding: 2rem 0;">
+        <div id="counter-widget-root" data-initial="5" data-step="2"></div>
+      </div>
+    </div>
+
+    <h2>Following Eyes Widget</h2>
+    <div class="component-card">
+      <p class="description">
+        Interactive eyes that follow your cursor.
+      </p>
+      <div class="component-wrapper" style="min-height: auto; padding: 2rem 0;">
+        <div id="following-eyes-widget-root"></div>
+      </div>
+    </div>
+
+    <h2>Gender Guess Quiz Widget</h2>
+    <div class="component-card">
+      <p class="description">
+        Interactive quiz widget with a slider to guess gender distribution statistics.
+      </p>
+      <div class="component-wrapper" style="min-height: auto; padding: 2rem 0;">
+        <div id="gender-guess-root" data-answer="97.5"></div>
+      </div>
+    </div>
+
+    <h2>Gender Table Widget</h2>
+    <div class="component-card">
+      <p class="description">
+        Displays gender distribution data for various channels with visual bars.
+      </p>
+      <div class="component-wrapper" style="min-height: auto; padding: 2rem 0;">
+        <div id="gender-table-root" data-channels='[{"name":"MrBeast","host":"Male","topic":"Entertainment","malePercent":74},{"name":"Physics Girl","host":"Female","topic":"Physics","malePercent":80}]'></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Load from built dist/ folder - same as production -->
+  <script type="module" src="/dist/population-chart.js"></script>
+  <script type="module" src="/dist/geography-charts.js"></script>
+  <script type="module" src="/dist/counter-widget.js"></script>
+  <script type="module" src="/dist/following-eyes-widget.js"></script>
+  <script type="module" src="/dist/gender-guess.js"></script>
+  <script type="module" src="/dist/gender-table.js"></script>
+</body>
+</html>

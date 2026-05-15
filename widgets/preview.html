@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Analytics Components Preview</title>
+  <style>
+    :root { color-scheme: light dark; }
+    body {
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Arial;
+      margin: 0;
+      padding: 2rem;
+      background: #f5f5f5;
+    }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+      color: #333;
+    }
+    h2 {
+      font-size: 1.5rem;
+      margin-top: 3rem;
+      margin-bottom: 1rem;
+      color: #444;
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 0.5rem;
+    }
+    .component-card {
+      background: white;
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .description {
+      color: #666;
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    }
+    .component-wrapper {
+      min-height: 500px;
+    }
+    code {
+      background: #f0f0f0;
+      padding: 0.2rem 0.4rem;
+      border-radius: 3px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 0.9em;
+    }
+    .info-box {
+      background: #e3f2fd;
+      border-left: 4px solid #2196f3;
+      padding: 1rem;
+      margin-bottom: 2rem;
+      border-radius: 4px;
+    }
+    .info-box h3 {
+      margin-top: 0;
+      color: #1976d2;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Analytics Components Preview</h1>
+    <div class="info-box">
+      <h3>🚀 Development Preview</h3>
+      <p>This page allows you to preview all analytics components without running Jekyll.</p>
+      <p><strong>To use:</strong></p>
+      <ol>
+        <li>Run <code>npm run dev</code> in this directory</li>
+        <li>Vite will serve this file and hot-reload on changes</li>
+        <li>Components will auto-mount to their respective divs below</li>
+      </ol>
+    </div>
+
+    <h2>STEM Pool Widget</h2>
+    <div class="component-card">
+      <p class="description">
+        Visualizes the pool of STEM-loving people (80% men, 20% women) and highlights
+        fractions <code>p<sub>men</sub></code> and <code>p<sub>women</sub></code> who watch YouTube STEM videos.
+      </p>
+      <div class="component-wrapper">
+        <div id="stem-pool-root"></div>
+      </div>
+      <p style="margin-top: 1rem; color: #888; font-size: 0.9rem;">
+        Embedding code: <code>&lt;div id="stem-pool-root"&gt;&lt;/div&gt;</code><br>
+        Script: <code>&lt;script type="module" src="/widgets/dist/stem-pool.js"&gt;&lt;/script&gt;</code>
+      </p>
+    </div>
+
+    <h2>Population Chart</h2>
+    <div class="component-card">
+      <p class="description">
+        Log-log scatter plot comparing country population to unique website visits.
+        Hover over points to see details.
+      </p>
+      <div class="component-wrapper">
+        <div id="population-chart-root"></div>
+      </div>
+      <p style="margin-top: 1rem; color: #888; font-size: 0.9rem;">
+        Embedding code: <code>&lt;div id="population-chart-root"&gt;&lt;/div&gt;</code><br>
+        Script: <code>&lt;script type="module" src="/widgets/dist/population-chart.js"&gt;&lt;/script&gt;</code>
+      </p>
+    </div>
+
+    <h2>Geography Charts</h2>
+    <div class="component-card">
+      <p class="description">
+        Multiple visualizations showing YouTube views and site analytics across different countries.
+        Includes views vs population, site uniques vs population, and relative engagement rates.
+      </p>
+      <div class="component-wrapper">
+        <div id="geography-charts-root"></div>
+      </div>
+      <p style="margin-top: 1rem; color: #888; font-size: 0.9rem;">
+        Embedding code: <code>&lt;div id="geography-charts-root"&gt;&lt;/div&gt;</code><br>
+        Script: <code>&lt;script type="module" src="/widgets/dist/geography-charts.js"&gt;&lt;/script&gt;</code>
+      </p>
+    </div>
+
+    <h2>Interactive Counter Widget</h2>
+    <div class="component-card">
+      <p class="description">
+        A simple React counter demonstrating state management and user interaction.
+        Perfect for testing React embedding in blog posts.
+      </p>
+      <div class="component-wrapper" style="min-height: auto; padding: 2rem 0;">
+        <div id="counter-widget-root" data-initial="0" data-step="1"></div>
+      </div>
+      <p style="margin-top: 1rem; color: #888; font-size: 0.9rem;">
+        Embedding code: <code>&lt;div id="counter-widget-root" data-initial="0" data-step="1"&gt;&lt;/div&gt;</code><br>
+        Script: <code>&lt;script type="module" src="/widgets/dist/counter-widget.js"&gt;&lt;/script&gt;</code><br>
+        <em>Note: Use data-initial and data-step attributes to configure starting value and increment.</em>
+      </p>
+    </div>
+
+    <h2>Following Eyes Widget</h2>
+    <div class="component-card">
+      <p class="description">
+        Interactive eyes that follow your cursor around the screen.
+        Demonstrates event handling and real-time animations in React.
+      </p>
+      <div class="component-wrapper" style="min-height: auto; padding: 2rem 0;">
+        <div id="following-eyes-widget-root"></div>
+      </div>
+      <p style="margin-top: 1rem; color: #888; font-size: 0.9rem;">
+        Embedding code: <code>&lt;div id="following-eyes-widget-root"&gt;&lt;/div&gt;</code><br>
+        Script: <code>&lt;script type="module" src="/widgets/dist/following-eyes-widget.js"&gt;&lt;/script&gt;</code>
+      </p>
+    </div>
+
+    <h2>Gender Guess Quiz Widget</h2>
+    <div class="component-card">
+      <p class="description">
+        Interactive quiz widget with a slider to guess gender distribution statistics.
+        Users submit their answer and get immediate feedback with the correct answer.
+      </p>
+      <div class="component-wrapper" style="min-height: auto; padding: 2rem 0;">
+        <div id="gender-guess-root" data-answer="97.5"></div>
+      </div>
+      <p style="margin-top: 1rem; color: #888; font-size: 0.9rem;">
+        Embedding code: <code>&lt;div id="gender-guess-root" data-answer="97.5"&gt;&lt;/div&gt;</code><br>
+        Script: <code>&lt;script type="module" src="/widgets/dist/gender-guess.js"&gt;&lt;/script&gt;</code><br>
+        <em>Note: Use data-answer attribute to configure the correct answer.</em>
+      </p>
+    </div>
+
+    <h2>Gender Table Widget</h2>
+    <div class="component-card">
+      <p class="description">
+        Displays gender distribution data for various channels with visual bars.
+        Configurable via JSON data attribute.
+      </p>
+      <div class="component-wrapper" style="min-height: auto; padding: 2rem 0;">
+        <div id="gender-table-root" data-channels='[{"name":"MrBeast","host":"Male","topic":"Entertainment","malePercent":74},{"name":"Physics Girl","host":"Female","topic":"Physics","malePercent":80}]'></div>
+      </div>
+      <p style="margin-top: 1rem; color: #888; font-size: 0.9rem;">
+        Embedding code: <code>&lt;div id="gender-table-root" data-channels='[...]'&gt;&lt;/div&gt;</code><br>
+        Script: <code>&lt;script type="module" src="/widgets/dist/gender-table.js"&gt;&lt;/script&gt;</code><br>
+        <em>Note: Pass channel data as JSON array via data-channels attribute.</em>
+      </p>
+    </div>
+
+    <div class="info-box" style="background: #fff3e0; border-left-color: #ff9800;">
+      <h3>📝 Adding to Blog Posts</h3>
+      <p>After building (<code>npm run build</code>), copy the embedding code shown above into any Jekyll markdown file.</p>
+    </div>
+  </div>
+
+  <!-- Load all widgets -->
+  <script type="module" src="/src/widgets/PopulationChart/index.jsx"></script>
+  <script type="module" src="/src/widgets/GeographyCharts/index.jsx"></script>
+  <script type="module" src="/src/widgets/Counter/index.jsx"></script>
+  <script type="module" src="/src/widgets/FollowingEyes/index.jsx"></script>
+  <script type="module" src="/src/widgets/GenderGuess/index.jsx"></script>
+  <script type="module" src="/src/widgets/GenderTable/index.jsx"></script>
+  <script type="module" src="/src/widgets/STEMPool/index.jsx"></script>
+</body>
+</html>

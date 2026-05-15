@@ -1,0 +1,7 @@
+{
+  "year": 2015,
+  "dataset": "enwiki.wikilink_graph.2015-03-01.csv.gz",
+  "total_nodes": 10568011,
+  "total_edges": 127624960,
+  "iterations": 10
+}

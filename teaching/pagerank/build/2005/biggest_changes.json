@@ -1,0 +1,31 @@
+{
+  "analysis": {
+    "from_iteration": 1,
+    "to_iteration": 5,
+    "total_nodes": 624287
+  },
+  "biggest_increases": [
+    {"rank": 1, "wiki_id": 1209, "change": 7.194548e-04, "iter1_score": 1.855123e-04, "final_score": 9.049671e-04},
+    {"rank": 2, "wiki_id": 28419612, "change": 6.507534e-04, "iter1_score": 3.604152e-04, "final_score": 1.011169e-03},
+    {"rank": 3, "wiki_id": 34558, "change": 5.841117e-04, "iter1_score": 3.521089e-04, "final_score": 9.362206e-04},
+    {"rank": 4, "wiki_id": 5390, "change": 5.021876e-04, "iter1_score": 7.445195e-06, "final_score": 5.096328e-04},
+    {"rank": 5, "wiki_id": 17730, "change": 4.792709e-04, "iter1_score": 3.659036e-04, "final_score": 8.451744e-04},
+    {"rank": 6, "wiki_id": 9239, "change": 4.702515e-04, "iter1_score": 6.427778e-04, "final_score": 1.113029e-03},
+    {"rank": 7, "wiki_id": 11887, "change": 4.523999e-04, "iter1_score": 2.517683e-04, "final_score": 7.041682e-04},
+    {"rank": 8, "wiki_id": 1797, "change": 4.514366e-04, "iter1_score": 5.197017e-05, "final_score": 5.034067e-04},
+    {"rank": 9, "wiki_id": 34570, "change": 3.838091e-04, "iter1_score": 1.729886e-04, "final_score": 5.567977e-04},
+    {"rank": 10, "wiki_id": 8569916, "change": 3.685656e-04, "iter1_score": 5.361758e-04, "final_score": 9.047415e-04}
+  ],
+  "biggest_decreases": [
+    {"rank": 1, "wiki_id": 128608, "change": -2.399351e-03, "iter1_score": 4.136255e-03, "final_score": 1.736905e-03},
+    {"rank": 2, "wiki_id": 72760, "change": -2.367593e-03, "iter1_score": 4.361627e-03, "final_score": 1.994034e-03},
+    {"rank": 3, "wiki_id": 34548, "change": -2.113968e-03, "iter1_score": 4.325455e-03, "final_score": 2.211487e-03},
+    {"rank": 4, "wiki_id": 23893, "change": -1.867105e-03, "iter1_score": 3.067408e-03, "final_score": 1.200303e-03},
+    {"rank": 5, "wiki_id": 6889, "change": -1.860900e-03, "iter1_score": 3.161645e-03, "final_score": 1.300746e-03},
+    {"rank": 6, "wiki_id": 19728, "change": -1.820986e-03, "iter1_score": 3.159909e-03, "final_score": 1.338923e-03},
+    {"rank": 7, "wiki_id": 57070, "change": -1.820436e-03, "iter1_score": 3.147769e-03, "final_score": 1.327334e-03},
+    {"rank": 8, "wiki_id": 873798, "change": -1.678421e-03, "iter1_score": 2.623133e-03, "final_score": 9.447123e-04},
+    {"rank": 9, "wiki_id": 873772, "change": -1.677800e-03, "iter1_score": 2.628408e-03, "final_score": 9.506081e-04},
+    {"rank": 10, "wiki_id": 873793, "change": -1.674153e-03, "iter1_score": 2.623925e-03, "final_score": 9.497721e-04}
+  ]
+}

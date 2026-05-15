@@ -1,0 +1,31 @@
+---
+# The front matter must be present.
+---
+
+@import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
+@import "minimal-mistakes"; // main partials
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+.embedded_video {
+    max-width: 100%;
+    height: auto;
+}
+
+// Increase main content width by 25%
+.page {
+    @media (min-width: 80em) {
+        max-width: 1250px; // 1000px * 1.25
+    }
+    @media (min-width: 64em) and (max-width: 80em) {
+        max-width: 1000px; // 800px * 1.25
+    }
+}
+
+// Override theme SVG max-width for widgets
+.stem-pool svg {
+    max-width: 100%;
+}

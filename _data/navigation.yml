@@ -1,0 +1,13 @@
+main:
+  - title: "About me"
+    url: "/"
+  - title: "Blog"
+    url: "/blog/"
+  - title: "Polylog"
+    url: "/polylog/"
+  - title: "Teaching"
+    url: "/teaching/"
+  - title: "Research"
+    url: "/research/"
+  - title: "Other"
+    url: "/other/" 

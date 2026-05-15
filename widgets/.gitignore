@@ -1,0 +1,16 @@
+# Dependencies
+node_modules/
+
+# Build output (built automatically by GitHub Actions)
+dist/
+
+# Development
+.vite/
+*.log
+.DS_Store
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo

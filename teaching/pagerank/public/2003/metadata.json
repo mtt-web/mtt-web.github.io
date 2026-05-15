@@ -1,0 +1,7 @@
+{
+  "year": 2003,
+  "dataset": "enwiki.wikilink_graph.2003-03-01.csv.gz",
+  "total_nodes": 118946,
+  "total_edges": 1318069,
+  "iterations": 10
+}

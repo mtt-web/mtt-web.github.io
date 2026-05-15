@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Country Analytics: Population vs. Unique Visits (Log-Log)</title>
+    <style>
+      :root { color-scheme: light dark; }
+      body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Arial, "Apple Color Emoji", "Segoe UI Emoji"; margin: 0; padding: 0 1rem 2rem; }
+      header { max-width: 1100px; margin: 1.25rem auto 0.5rem; }
+      h1 { font-size: 1.5rem; margin: 0.25rem 0; }
+      p.desc { margin: 0.25rem 0 0.75rem; color: #666; }
+      .chart-card { max-width: 1100px; margin: 0 auto; background: rgba(127,127,127,0.05); border: 1px solid rgba(127,127,127,0.2); border-radius: 8px; padding: 0.75rem; }
+      .chart-wrap { width: 100%; height: 62vh; min-height: 420px; position: relative; }
+      svg { width: 100%; height: 100%; display: block; }
+      .axis path, .axis line { stroke: currentColor; stroke-opacity: 0.3; }
+      .grid line { stroke: currentColor; stroke-opacity: 0.08; }
+      .tick text { font-size: 12px; fill: currentColor; fill-opacity: 0.85; }
+      .dot { fill: #3b82f6; fill-opacity: 0.75; stroke: #1d4ed8; stroke-width: 0.6; }
+      .dot:hover { stroke-width: 1.1; fill-opacity: 1; }
+      .tooltip { position: absolute; pointer-events: none; background: rgba(0,0,0,0.8); color: #fff; padding: 6px 8px; border-radius: 6px; font-size: 12px; transform: translate(-50%, calc(-100% - 10px)); white-space: nowrap; opacity: 0; transition: opacity 120ms ease, transform 120ms ease; }
+      .legend { font-size: 12px; fill: currentColor; fill-opacity: 0.85; }
+      .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 1px, 1px); white-space: nowrap; border: 0; }
+      .footer-note { max-width: 1100px; margin: 0.75rem auto 0; font-size: 12px; color: #666; }
+      a { color: #2563eb; }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+  </head>
+  <body>
+    <header>
+      <h1>Population vs. Unique Visits by Country</h1>
+      <p class="desc">Log-log scatterplot comparing country population to unique visits. Hover points for details.</p>
+    </header>
+
+    <main class="chart-card">
+      <div class="chart-wrap" id="chart">
+        <div class="tooltip" id="tooltip" aria-hidden="true"></div>
+        <svg role="img" aria-labelledby="chart-title chart-desc">
+          <title id="chart-title">Population vs Unique Visits (log-log)</title>
+          <desc id="chart-desc">Each point is a country positioned by population on the x-axis and unique visits on the y-axis with logarithmic scales.</desc>
+        </svg>
+      </div>
+    </main>
+
+    <p class="footer-note">
+      Data sources: uniques from ClustrMaps snapshot; population from official/UN estimates (2024–2025). This page reads <code>blog/analytics/country_uniques.json</code> and <code>blog/analytics/country_population.json</code>.
+    </p>
+
+    <script>
+      (function () {
+        const uniquesUrl = './country_uniques.json';
+        const populationUrl = './country_population.json';
+
+        const svg = d3.select('svg');
+        const tooltip = d3.select('#tooltip');
+
+        const margins = { top: 24, right: 22, bottom: 48, left: 66 };
+
+        function formatSI(n) {
+          return d3.format('.2s')(n).replace('G', 'B');
+        }
+
+        function render(data) {
+          const wrap = document.getElementById('chart');
+          const width = wrap.clientWidth;
+          const height = wrap.clientHeight;
+
+          svg.attr('viewBox', `0 0 ${width} ${height}`);
+          svg.selectAll('*').remove();
+
+          const innerW = Math.max(100, width - margins.left - margins.right);
+          const innerH = Math.max(100, height - margins.top - margins.bottom);
+
+          const g = svg.append('g').attr('transform', `translate(${margins.left},${margins.top})`);
+
+          const x = d3.scaleLog()
+            .domain(d3.extent(data, d => d.population))
+            .nice()
+            .range([0, innerW]);
+
+          const y = d3.scaleLog()
+            .domain(d3.extent(data, d => d.uniques))
+            .nice()
+            .range([innerH, 0]);
+
+          const xAxis = d3.axisBottom(x).ticks(8, d3.format('.2s'));
+          const yAxis = d3.axisLeft(y).ticks(8, d3.format('.2s'));
+
+          // Grid
+          g.append('g')
+            .attr('class', 'grid')
+            .attr('transform', `translate(0,${innerH})`)
+            .call(d3.axisBottom(x).tickSize(-innerH).tickFormat(''));
+
+          g.append('g')
+            .attr('class', 'grid')
+            .call(d3.axisLeft(y).tickSize(-innerW).tickFormat(''));
+
+          // Axes
+          g.append('g')
+            .attr('class', 'axis')
+            .attr('transform', `translate(0,${innerH})`)
+            .call(xAxis)
+            .call(g => g.append('text')
+              .attr('x', innerW)
+              .attr('y', 36)
+              .attr('fill', 'currentColor')
+              .attr('text-anchor', 'end')
+              .attr('font-size', 12)
+              .text('Population'));
+
+          g.append('g')
+            .attr('class', 'axis')
+            .call(yAxis)
+            .call(g => g.append('text')
+              .attr('x', 0)
+              .attr('y', -10)
+              .attr('fill', 'currentColor')
+              .attr('text-anchor', 'start')
+              .attr('font-size', 12)
+              .text('Unique visits'));
+
+          // Points
+          const r = Math.max(2, Math.min(6, Math.sqrt(innerW * innerH) / 120));
+          const points = g.append('g').attr('aria-hidden', 'true');
+
+          points.selectAll('circle')
+            .data(data)
+            .join('circle')
+            .attr('class', 'dot')
+            .attr('cx', d => x(d.population))
+            .attr('cy', d => y(d.uniques))
+            .attr('r', r)
+            .on('mouseenter', function (event, d) {
+              const [px, py] = d3.pointer(event, wrap);
+              tooltip
+                .style('left', px + 'px')
+                .style('top', py + 'px')
+                .style('opacity', 1)
+                .attr('aria-hidden', 'false')
+                .html(
+                  `<strong>${d.country}</strong><br/>Population: ${formatSI(d.population)}<br/>Uniques: ${formatSI(d.uniques)}`
+                );
+            })
+            .on('mousemove', function (event) {
+              const [px, py] = d3.pointer(event, wrap);
+              tooltip.style('left', px + 'px').style('top', py + 'px');
+            })
+            .on('mouseleave', function () {
+              tooltip.style('opacity', 0).attr('aria-hidden', 'true');
+            });
+
+          // Simple legend
+          const legend = svg.append('g').attr('transform', `translate(${margins.left + 8}, ${margins.top + 8})`);
+          legend.append('text').attr('class', 'legend').text('Axes are logarithmic');
+        }
+
+        Promise.all([fetch(uniquesUrl), fetch(populationUrl)])
+          .then(([a, b]) => Promise.all([a.json(), b.json()]))
+          .then(([uniquesMap, popMap]) => {
+            // Harmonize key names for consistent joining
+            const entries = Object.entries(uniquesMap);
+            const rows = entries
+              .map(([country, uniques]) => {
+                const population = popMap[country];
+                return { country, uniques: Number(uniques), population: Number(population) };
+              })
+              .filter(d => Number.isFinite(d.uniques) && Number.isFinite(d.population) && d.uniques > 0 && d.population > 0);
+
+            function onResize() { render(rows); }
+            window.addEventListener('resize', onResize);
+            render(rows);
+          })
+          .catch(err => {
+            console.error('Failed to load analytics data', err);
+            const msg = document.createElement('p');
+            msg.textContent = 'Failed to load analytics data.';
+            document.querySelector('main').appendChild(msg);
+          });
+      })();
+    </script>
+  </body>
+  </html>
+
+

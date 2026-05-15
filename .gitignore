@@ -1,0 +1,10 @@
+/_site
+
+# Widget build output (built by GitHub Actions)
+/widgets/dist/
+
+# Claude Code settings - contains approved commands which may include passwords
+.claude/settings.local.json
+
+# Node modules
+node_modules/

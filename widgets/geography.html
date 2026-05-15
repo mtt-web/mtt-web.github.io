@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>YouTube Geography: Views vs Population (Log-Log)</title>
+    <style>
+      :root { color-scheme: light dark; }
+      body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Arial, "Apple Color Emoji", "Segoe UI Emoji"; margin: 0; padding: 0 1rem 2rem; }
+      header { max-width: 1100px; margin: 1.25rem auto 0.5rem; }
+      h1 { font-size: 1.5rem; margin: 0.25rem 0; }
+      p.desc { margin: 0.25rem 0 0.75rem; color: #666; }
+      .chart-card { max-width: 1100px; margin: 0 auto; background: rgba(127,127,127,0.05); border: 1px solid rgba(127,127,127,0.2); border-radius: 8px; padding: 0.75rem; }
+      .chart-wrap { width: 100%; height: 62vh; min-height: 420px; position: relative; }
+      svg { width: 100%; height: 100%; display: block; }
+      .axis path, .axis line { stroke: currentColor; stroke-opacity: 0.3; }
+      .grid line { stroke: currentColor; stroke-opacity: 0.08; }
+      .tick text { font-size: 12px; fill: currentColor; fill-opacity: 0.85; }
+      .dot { fill: #10b981; fill-opacity: 0.75; stroke: #047857; stroke-width: 0.6; }
+      .dot:hover { stroke-width: 1.1; fill-opacity: 1; }
+      .tooltip { position: absolute; pointer-events: none; background: rgba(0,0,0,0.8); color: #fff; padding: 6px 8px; border-radius: 6px; font-size: 12px; transform: translate(-50%, calc(-100% - 10px)); white-space: nowrap; opacity: 0; transition: opacity 120ms ease, transform 120ms ease; }
+      .legend { font-size: 12px; fill: currentColor; fill-opacity: 0.85; }
+      .footer-note { max-width: 1100px; margin: 0.75rem auto 0; font-size: 12px; color: #666; }
+      code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
+      .zoom-btn { position: absolute; top: 8px; right: 8px; z-index: 10; background: rgba(0,0,0,0.6); color: #fff; border: 0; border-radius: 4px; padding: 4px 8px; cursor: pointer; font-size: 12px; }
+      .chart-card.fullscreen { position: fixed; inset: 0; z-index: 1000; margin: 0; border-radius: 0; padding: 0.5rem; background: rgba(0,0,0,0.85); }
+      .chart-card.fullscreen .chart-wrap { height: calc(100vh - 1rem); min-height: 0; }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+    <script src="./helpers.js"></script>
+    <script src="./charts.js"></script>
+  </head>
+  <body>
+    <header>
+      <h1>YouTube Geography: Views vs Population</h1>
+      <p class="desc">Log-log scatterplot comparing YouTube views per country to its population. Hover points for details.</p>
+    </header>
+
+    <main class="chart-card">
+      <div class="chart-wrap" id="chart">
+        <button class="zoom-btn" data-target="views">Fullscreen</button>
+        <div class="tooltip" id="tooltip" aria-hidden="true"></div>
+        <svg id="svg-views" role="img" aria-labelledby="chart-title chart-desc">
+          <title id="chart-title">YouTube Views vs Population (log-log)</title>
+          <desc id="chart-desc">Each point is a country positioned by population on the x-axis and YouTube views on the y-axis with logarithmic scales.</desc>
+        </svg>
+      </div>
+    </main>
+
+    <main class="chart-card" style="margin-top: 1rem;">
+      <div class="chart-wrap" id="chart-uniques">
+        <button class="zoom-btn" data-target="uniques">Fullscreen</button>
+        <svg id="svg-uniques" role="img" aria-labelledby="chart2-title chart2-desc">
+          <title id="chart2-title">Site Uniques vs Population (log-log)</title>
+          <desc id="chart2-desc">Each point is a country positioned by population on the x-axis and site unique visits on the y-axis with logarithmic scales.</desc>
+        </svg>
+      </div>
+    </main>
+
+    <main class="chart-card" style="margin-top: 1rem;">
+      <div class="chart-wrap" id="chart-rates">
+        <button class="zoom-btn" data-target="rates">Fullscreen</button>
+        <svg id="svg-rates" role="img" aria-labelledby="chart3-title chart3-desc">
+          <title id="chart3-title">Rates: YouTube views/pop vs Site uniques/pop (log-log)</title>
+          <desc id="chart3-desc">Each point is a country positioned by log rate of YouTube views per population (x) and site uniques per population (y).</desc>
+        </svg>
+      </div>
+    </main>
+
+    <p class="footer-note">
+      Reads <code>blog/analytics/Geography 2021-08-22_2025-10-17 Polylog/Table data.csv</code> (YouTube Studio export) and <code>blog/analytics/country_population.json</code>. Country codes are ISO-3166 alpha-2; mapped to country names used in the population file.
+    </p>
+
+    <script>
+      (function () {
+        const tableCsvPath = './Geography 2021-08-22_2025-10-17 Polylog/Table data.csv';
+        const populationPath = './country_population.json';
+
+        const svgViews = d3.select('#svg-views');
+        const svgUniques = d3.select('#svg-uniques');
+        const tooltip = d3.select('#tooltip');
+        const margins = { top: 24, right: 22, bottom: 48, left: 66 };
+
+        function formatSI(n) { return d3.format('.2s')(n).replace('G', 'B'); }
+
+        // Use helpers for normalization and flags
+        const normalizeCountry = CountryHelpers.normalizeCountry;
+        const getFlagByISO = CountryHelpers.getFlagByISO;
+        const getFlagByName = CountryHelpers.getFlagByName;
+
+        function formatSI2(n) { return d3.format('.2s')(n).replace('G', 'B'); }
+
+        function renderViews(data) {
+          AnalyticsCharts.renderLogLogScatter({
+            containerId: 'chart',
+            svgId: 'svg-views',
+            data,
+            xAccessor: d => d.population,
+            yAccessor: d => d.views,
+            xLabel: 'Population',
+            yLabel: 'YouTube views',
+            pointTextAccessor: d => d.flag,
+            formatTooltip: d => `<strong>${d.country}</strong><br/>Population: ${formatSI2(d.population)}<br/>Views: ${formatSI2(d.views)}`,
+            hoverRateLine: true,
+            margins,
+          });
+        }
+
+        Promise.all([
+          d3.csv(tableCsvPath, d3.autoType),
+          fetch(populationPath).then(r => r.json())
+        ]).then(([tableRows, populationMap]) => {
+          // Expect headers: Geography, Views, Watch time (hours), Average view duration
+          const baseRows = tableRows
+            .filter(row => row.Geography && row.Geography !== 'Total')
+            .map(row => {
+              const raw = String(row.Geography);
+              let iso = null, name = raw;
+              if (/^[A-Z]{2}$/.test(raw)) { iso = raw; }
+              else if (/^[A-Z]{2}\s*-\s*/.test(raw)) { iso = raw.slice(0,2); name = raw.slice(2).replace(/^\s*-\s*/, ''); }
+              const views = Number(row.Views) || 0;
+              return { iso, name, views };
+            })
+            .filter(d => d.views > 0);
+
+          Promise.all(baseRows.map(async r => {
+            const country = await normalizeCountry(r.iso, r.name);
+            const population = Number(populationMap[country]) || NaN;
+            const flag = r.iso ? await getFlagByISO(r.iso) : await getFlagByName(country);
+            return { country, views: r.views, population, flag };
+          })).then(rows => {
+            const filtered = rows.filter(d => Number.isFinite(d.population) && d.population > 0);
+            function onResize() { renderViews(filtered); }
+            window.addEventListener('resize', onResize);
+            renderViews(filtered);
+            latestViews = filtered;
+            maybeRenderRates();
+          });
+        }).catch(err => {
+          console.error('Failed to load geography data', err);
+          const msg = document.createElement('p');
+          msg.textContent = 'Failed to load geography data.';
+          document.querySelector('main').appendChild(msg);
+        });
+
+        // Second plot: Site uniques vs population
+        const uniquesPath = './country_uniques.json';
+        function renderUniques(data) {
+          AnalyticsCharts.renderLogLogScatter({
+            containerId: 'chart-uniques',
+            svgId: 'svg-uniques',
+            data,
+            xAccessor: d => d.population,
+            yAccessor: d => d.uniques,
+            xLabel: 'Population',
+            yLabel: 'Site uniques',
+            pointTextAccessor: d => d.flag,
+            formatTooltip: d => `<strong>${d.country}</strong><br/>Population: ${formatSI2(d.population)}<br/>Uniques: ${formatSI2(d.uniques)}`,
+            hoverRateLine: true,
+            margins,
+          });
+        }
+
+        Promise.all([
+          fetch(uniquesPath).then(r => r.json()),
+          fetch(populationPath).then(r => r.json())
+        ]).then(([uniquesMap, populationMap]) => {
+          const entries = Object.entries(uniquesMap);
+          Promise.all(entries.map(async ([country, uniques]) => {
+            const flag = await getFlagByName(country);
+            return { country, uniques: Number(uniques), population: Number(populationMap[country]), flag };
+          })).then(rows => {
+            const filtered = rows.filter(d => Number.isFinite(d.population) && d.population > 0 && d.uniques > 0);
+            function onResize2() { renderUniques(filtered); }
+            window.addEventListener('resize', onResize2);
+            renderUniques(filtered);
+            latestUniques = filtered;
+            maybeRenderRates();
+          });
+        }).catch(err => {
+          console.error('Failed to load uniques data', err);
+        });
+
+        // Third plot: Rates scatter
+        function renderRates(data) {
+          // Normalize rates by total sums so that the base diagonal represents equal share benchmarks
+          const totalViews = d3.sum(data, d => d.views);
+          const totalUniques = d3.sum(data, d => d.uniques);
+          const totalPop = d3.sum(data, d => d.population);
+          const yShare = totalUniques / totalPop; // site uniques per capita baseline
+          const xShare = totalViews / totalPop;   // youtube views per capita baseline
+          // Transform data into per-capita rates relative to totals
+          const norm = data.map(d => ({
+            ...d,
+            xRate: d.views / d.population / xShare,
+            yRate: d.uniques / d.population / yShare,
+          })).filter(d => d.xRate > 0 && d.yRate > 0);
+
+          AnalyticsCharts.renderLogLogScatter({
+            containerId: 'chart-rates',
+            svgId: 'svg-rates',
+            data: norm,
+            xAccessor: d => d.xRate,
+            yAccessor: d => d.yRate,
+            xLabel: 'YouTube views per pop (relative to global avg)',
+            yLabel: 'Site uniques per pop (relative to global avg)',
+            pointTextAccessor: d => d.flag,
+            formatTooltip: d => `<strong>${d.country}</strong><br/>Views/pop: ${d3.format('.3g')(d.views/d.population)} (${d3.format('.2f')(d.xRate)}× global)<br/>Uniques/pop: ${d3.format('.3g')(d.uniques/d.population)} (${d3.format('.2f')(d.yRate)}× global)`,
+            hoverRateLine: false,
+            baseDiagonal: true,
+            includeOneInDomain: true,
+            margins,
+          });
+        }
+
+        // Compose rates input when both views and uniques are ready
+        let latestViews = null;
+        let latestUniques = null;
+        function maybeRenderRates() {
+          if (!latestViews || !latestUniques) return;
+          const byCountryViews = new Map(latestViews.map(d => [d.country, d]));
+          const rows = latestUniques
+            .map(u => {
+              const v = byCountryViews.get(u.country);
+              if (!v) return null;
+              return { country: u.country, population: u.population, views: v.views, uniques: u.uniques, flag: u.flag };
+            })
+            .filter(Boolean)
+            .filter(d => d.views > 0 && d.uniques > 0 && d.population > 0);
+          function onResize3() { renderRates(rows); }
+          window.addEventListener('resize', onResize3);
+          renderRates(rows);
+        }
+      })();
+    </script>
+    <script>
+      (function(){
+        function toggleFullscreen(button){
+          const target = button.getAttribute('data-target');
+          const wrap = document.getElementById(`chart-${target}`) || (target==='views' ? document.getElementById('chart') : null);
+          if(!wrap) return;
+          const card = wrap.closest('.chart-card');
+          card.classList.toggle('fullscreen');
+          // Trigger resize for redraws
+          setTimeout(() => window.dispatchEvent(new Event('resize')), 50);
+        }
+        document.querySelectorAll('.zoom-btn').forEach(btn => {
+          btn.addEventListener('click', () => toggleFullscreen(btn));
+        });
+      })();
+    </script>
+  </body>
+  </html>
+
+

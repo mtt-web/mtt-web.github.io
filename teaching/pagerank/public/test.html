@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PageRank Debug Test</title>
+</head>
+<body>
+    <h1>PageRank File Debug Test</h1>
+    <div id="results"></div>
+
+    <script>
+        async function testFetch() {
+            const results = document.getElementById('results');
+            results.innerHTML = '<h2>Testing file access...</h2>';
+
+            for (let i = 0; i <= 8; i++) {
+                const filename = `pagerank_iter_${i.toString().padStart(2, '0')}.json`;
+                try {
+                    console.log(`Testing: ${filename}`);
+                    const response = await fetch(filename);
+                    const text = await response.text();
+
+                    results.innerHTML += `
+                        <div style="margin: 10px; padding: 10px; border: 1px solid #ccc;">
+                            <strong>${filename}</strong><br>
+                            Status: ${response.status}<br>
+                            OK: ${response.ok}<br>
+                            Content-Type: ${response.headers.get('content-type')}<br>
+                            Size: ${text.length} bytes<br>
+                            First 100 chars: <code>${text.substring(0, 100)}...</code>
+                        </div>
+                    `;
+
+                    // Try to parse JSON
+                    const data = JSON.parse(text);
+                    console.log(`Parsed ${filename}:`, data);
+                } catch (err) {
+                    results.innerHTML += `
+                        <div style="margin: 10px; padding: 10px; border: 1px solid red; color: red;">
+                            <strong>${filename}</strong><br>
+                            ERROR: ${err.message}
+                        </div>
+                    `;
+                    console.error(`Error with ${filename}:`, err);
+                }
+            }
+        }
+
+        testFetch();
+    </script>
+</body>
+</html>

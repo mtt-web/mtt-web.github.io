@@ -1,0 +1,229 @@
+<!-- Footnote styles -->
+<style>
+  .footnote-ref {
+    position: relative;
+    top: -0.5em;
+    font-size: 0.75em;
+    color: #4b5563;
+    text-decoration: none;
+    margin-left: 0.15em;
+    cursor: default;
+    transition: none;
+  }
+
+  .footnote-ref:hover {
+    color: #4b5563;
+  }
+
+  .footnote-tooltip {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-8px);
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.375rem;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    padding: 0.75rem 1rem;
+    width: max-content;
+    max-width: min(20rem, calc(100vw - 2rem));
+    font-size: 0.875rem;
+    line-height: 1.5;
+    color: #1f2937;
+    text-align: left;
+    white-space: normal;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+    pointer-events: auto; /* allow hovering and clicking inside */
+  }
+
+  .footnote-tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 6px solid white;
+    filter: drop-shadow(0 1px 1px rgb(0 0 0 / 0.05));
+  }
+
+  .footnote-ref:hover .footnote-tooltip,
+  .footnote-ref:focus .footnote-tooltip,
+  .footnote-tooltip:hover {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  /* Mobile-friendly: on small screens, show tooltip below instead of above */
+  @media (max-width: 640px) {
+    .footnote-tooltip {
+      bottom: auto;
+      top: 100%;
+      transform: translateX(-50%) translateY(8px);
+    }
+
+    .footnote-tooltip::after {
+      top: auto;
+      bottom: 100%;
+      border-top: none;
+      border-bottom: 6px solid white;
+    }
+  }
+
+  /* Ensure tooltips near edges don't go off-screen */
+  .footnote-ref {
+    position: relative;
+  }
+  
+  /* Link styling inside tooltip */
+  .footnote-tooltip a {
+    color: #1d4ed8;
+    text-decoration: underline;
+  }
+  .footnote-tooltip a:hover {
+    color: #1e3a8a;
+  }
+  
+  /* For numbered footnotes at the bottom of the page */
+  .footnotes-section {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #e5e7eb;
+    font-size: 0.875rem;
+  }
+
+  .footnotes-section h3 {
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+
+  .footnote-item {
+    margin-bottom: 0.75rem;
+    line-height: 1.5;
+  }
+
+  .footnote-item-number {
+    font-weight: 500;
+    color: #4b5563;
+    margin-right: 0.5rem;
+  }
+</style>
+
+<!-- Footnote JavaScript -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const footnotes = new Map();
+    let footnoteCounter = 0;
+    
+    // Process all <footnote> custom tags
+    const footnoteElements = document.querySelectorAll('footnote');
+    footnoteElements.forEach(function(footnoteEl) {
+      // Prefer innerHTML so links and formatting are preserved; fallback to textContent
+      const footnoteText = (footnoteEl.innerHTML && footnoteEl.innerHTML.trim()) || footnoteEl.textContent;
+      const footnoteId = footnoteEl.getAttribute('id') || footnoteEl.getAttribute('mark');
+      
+      // Determine the footnote mark (custom or auto-numbered)
+      let mark;
+      if (footnoteId) {
+        // Use custom mark
+        mark = footnoteId;
+        if (!footnotes.has(mark)) {
+          footnotes.set(mark, footnoteText);
+        }
+      } else {
+        // Auto-number
+        footnoteCounter++;
+        mark = footnoteCounter.toString();
+        footnotes.set(mark, footnoteText);
+      }
+      
+      // Create the footnote reference element
+      const sup = document.createElement('sup');
+      sup.className = 'footnote-ref';
+      sup.tabIndex = 0;
+      sup.innerHTML = mark;
+      
+      // Create tooltip
+      const tooltip = document.createElement('span');
+      tooltip.className = 'footnote-tooltip';
+      tooltip.innerHTML = footnoteText;
+      sup.appendChild(tooltip);
+      
+      // Replace the original element with the footnote
+      footnoteEl.replaceWith(sup);
+    });
+
+    // Also process legacy span elements with data-footnote attribute for backwards compatibility
+    const footnoteRefs = document.querySelectorAll('[data-footnote]');
+    footnoteRefs.forEach(function(ref) {
+      const footnoteText = ref.getAttribute('data-footnote');
+      const footnoteId = ref.getAttribute('data-footnote-id');
+      
+      // Determine the footnote mark (custom or auto-numbered)
+      let mark;
+      if (footnoteId) {
+        // Use custom mark
+        mark = footnoteId;
+        if (!footnotes.has(mark)) {
+          footnotes.set(mark, footnoteText);
+        }
+      } else {
+        // Auto-number
+        footnoteCounter++;
+        mark = footnoteCounter.toString();
+        footnotes.set(mark, footnoteText);
+      }
+      
+      // Create the footnote reference element
+      const sup = document.createElement('sup');
+      sup.className = 'footnote-ref';
+      sup.tabIndex = 0;
+      sup.innerHTML = mark;
+      
+      // Create tooltip
+      const tooltip = document.createElement('span');
+      tooltip.className = 'footnote-tooltip';
+      tooltip.innerHTML = footnoteText || footnotes.get(mark);
+      sup.appendChild(tooltip);
+      
+      // Replace the original element with the footnote
+      ref.replaceWith(sup);
+    });
+    
+    // Adjust tooltip position for edge cases
+    document.querySelectorAll('.footnote-ref').forEach(function(ref) {
+      const tooltip = ref.querySelector('.footnote-tooltip');
+      if (!tooltip) return;
+
+      const adjustPosition = function() {
+        const rect = tooltip.getBoundingClientRect();
+        const viewportWidth = window.innerWidth;
+        
+        // Reset any previous adjustments
+        tooltip.style.left = '';
+        tooltip.style.right = '';
+        tooltip.style.transform = 'translateX(-50%) translateY(-8px)';
+
+        // Adjust horizontal position if tooltip goes off-screen
+        if (rect.left < 10) {
+          tooltip.style.left = '0';
+          tooltip.style.transform = 'translateX(0) translateY(-8px)';
+        } else if (rect.right > viewportWidth - 10) {
+          tooltip.style.left = 'auto';
+          tooltip.style.right = '0';
+          tooltip.style.transform = 'translateX(0) translateY(-8px)';
+        }
+      };
+
+      ref.addEventListener('mouseenter', adjustPosition);
+      window.addEventListener('resize', adjustPosition);
+    });
+  });
+</script>

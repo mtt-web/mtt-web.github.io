@@ -1,0 +1,64 @@
+<!-- KaTeX CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css" crossorigin="anonymous">
+
+<!-- KaTeX JavaScript -->
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.js" crossorigin="anonymous"></script>
+
+<!-- Auto-render extension for automatic LaTeX rendering -->
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    renderMathInElement(document.body, {
+        // Customizable KaTeX options
+        delimiters: [
+            {left: '$$', right: '$$', display: true},
+            {left: '$', right: '$', display: false},
+            {left: '\\(', right: '\\)', display: false},
+            {left: '\\[', right: '\\]', display: true}
+        ],
+        // Enable some useful macros
+        macros: {
+            "\\R": "\\mathbb{R}",
+            "\\N": "\\mathbb{N}",
+            "\\Z": "\\mathbb{Z}",
+            "\\Q": "\\mathbb{Q}",
+            "\\C": "\\mathbb{C}",
+            "\\eps": "\\varepsilon",
+            "\\phi": "\\varphi",
+            "\\theta": "\\vartheta"
+        },
+        // Don't throw errors on parse failures
+        throwOnError: false,
+        // Allow HTML output for better performance
+        output: 'html',
+        // Trust content (needed for some advanced features)
+        trust: true
+    });
+});
+</script>
+
+<style>
+/* Custom KaTeX styling to match your site */
+.katex {
+    font-size: 1.1em;
+}
+
+.katex-display {
+    margin: 1.5em 0;
+    text-align: center;
+}
+
+/* Ensure proper spacing around math */
+p .katex {
+    margin: 0 0.2em;
+}
+
+/* Style for numbered equations */
+.equation-number {
+    float: right;
+    color: #666;
+    font-size: 0.9em;
+    margin-top: 0.5em;
+}
+</style>

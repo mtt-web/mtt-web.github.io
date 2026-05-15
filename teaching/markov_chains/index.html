@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vibecoded Markov Chain Demo</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div id="root"></div>
+
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script src="js/MarkovChain.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@3.0.1/dist/chartjs-plugin-annotation.min.js"></script>
+
+    <script id="chain-imports">
+        const chainModules = [];
+    </script>
+
+    <script src="chains/weather-model.js"></script>
+    <script src="chains/waiting-for-six.js"></script>
+    <script src="chains/throwing-frisbee.js"></script>
+    <script src="chains/random-walk.js"></script>
+    <script src="chains/counter-demo.js"></script>
+    <script src="chains/coupon-collector2.js"></script>
+    <script src="chains/snakes-and-ladders.js"></script>
+    <script src="chains/english-1mer.js"></script>
+    <script src="chains/english-2mer.js"></script>
+    <script src="chains/pagerank.js"></script>
+    <script src="chains/undirected-graph-walk.js"></script>
+
+    <script type="text/babel" src="js/app.jsx"></script>
+</body>
+</html>

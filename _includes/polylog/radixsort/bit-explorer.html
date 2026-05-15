@@ -1,0 +1,329 @@
+<div id="bit-widget-root"></div>
+
+<style>
+    .bit-widget-container {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        margin: 20px 0;
+        padding: 20px;
+        background: #f9f9f9;
+        border-radius: 8px;
+    }
+    .bit-container {
+        display: flex;
+        gap: 8px;
+        margin: 20px 0;
+        justify-content: center;
+    }
+    .bit-cell {
+        width: 50px;
+        height: 50px;
+        border: 2px solid #333;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        font-weight: bold;
+        cursor: pointer;
+        user-select: none;
+        transition: all 0.2s;
+        border-radius: 4px;
+    }
+    .bit-cell:hover {
+        background: #f0f0f0;
+        transform: scale(1.05);
+    }
+    .bit-cell.one {
+        background: #4CAF50;
+        color: white;
+    }
+    .bit-cell.zero {
+        background: white;
+        color: #333;
+    }
+    .bit-index {
+        font-size: 10px;
+        color: #666;
+        text-align: center;
+        margin-top: 4px;
+    }
+    .interpretation {
+        margin: 20px 0;
+        padding: 20px;
+        background: white;
+        border-radius: 8px;
+    }
+    .interpretation h3 {
+        margin-top: 0;
+        color: #333;
+        font-size: 18px;
+    }
+    .math-expr {
+        font-family: 'Courier New', monospace;
+        background: #f5f5f5;
+        padding: 8px;
+        border-radius: 4px;
+        margin: 8px 0;
+        overflow-x: auto;
+    }
+    .value-display {
+        font-size: 24px;
+        font-weight: bold;
+        color: #2196F3;
+        margin: 10px 0;
+    }
+    .note {
+        color: #666;
+        font-size: 14px;
+        margin: 8px 0;
+        font-style: italic;
+    }
+    .minifloat-parts {
+        display: flex;
+        gap: 10px;
+        margin: 10px 0;
+    }
+    .minifloat-part {
+        padding: 8px;
+        border-radius: 4px;
+        flex: 1;
+    }
+    .sign-part {
+        background: #ffebee;
+        border: 1px solid #ef5350;
+    }
+    .exponent-part {
+        background: #e3f2fd;
+        border: 1px solid #2196f3;
+    }
+    .mantissa-part {
+        background: #f3e5f5;
+        border: 1px solid #9c27b0;
+    }
+    .special-case {
+        background: #fff3e0;
+        border: 1px solid #ff9800;
+        padding: 10px;
+        border-radius: 4px;
+        margin: 10px 0;
+    }
+</style>
+
+<script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+<script type="text/babel">
+    const { useState } = React;
+
+    function BitWidget() {
+        const [bits, setBits] = useState([0, 0, 0, 0, 0, 0, 0, 0]);
+
+        const toggleBit = (index) => {
+            const newBits = [...bits];
+            newBits[index] = newBits[index] === 0 ? 1 : 0;
+            setBits(newBits);
+        };
+
+        const getUnsignedValue = () => {
+            let value = 0;
+            let terms = [];
+            for (let i = 0; i < 8; i++) {
+                if (bits[7 - i] === 1) {
+                    value += Math.pow(2, i);
+                    terms.push(`2^${i}`);
+                }
+            }
+            return { value, terms };
+        };
+
+        const getSignedValue = () => {
+            let value = 0;
+            let terms = [];
+            
+            // Check sign bit
+            if (bits[0] === 1) {
+                // Negative number in two's complement
+                value = -128;
+                terms.push('-2^7');
+                for (let i = 1; i < 8; i++) {
+                    if (bits[i] === 1) {
+                        value += Math.pow(2, 7 - i);
+                        terms.push(`2^${7 - i}`);
+                    }
+                }
+            } else {
+                // Positive number
+                for (let i = 1; i < 8; i++) {
+                    if (bits[i] === 1) {
+                        value += Math.pow(2, 7 - i);
+                        terms.push(`2^${7 - i}`);
+                    }
+                }
+            }
+            
+            return { value, terms };
+        };
+
+        const getMinifloatValue = () => {
+            // 8-bit minifloat: 1 sign, 4 exponent, 3 mantissa
+            const sign = bits[0];
+            const exponentBits = bits.slice(1, 5);
+            const mantissaBits = bits.slice(5, 8);
+            
+            const exponentValue = exponentBits.reduce((acc, bit, idx) => 
+                acc + bit * Math.pow(2, 3 - idx), 0);
+            
+            const mantissaValue = mantissaBits.reduce((acc, bit, idx) => 
+                acc + bit * Math.pow(2, -(idx + 1)), 0);
+            
+            // Check for special cases
+            if (exponentValue === 15) { // All exponent bits are 1
+                if (mantissaValue === 0) {
+                    return {
+                        sign,
+                        exponent: exponentValue,
+                        mantissa: mantissaValue,
+                        value: sign === 0 ? Infinity : -Infinity,
+                        special: 'infinity'
+                    };
+                } else {
+                    return {
+                        sign,
+                        exponent: exponentValue,
+                        mantissa: mantissaValue,
+                        value: NaN,
+                        special: 'NaN'
+                    };
+                }
+            } else if (exponentValue === 0) { // Subnormal
+                const value = Math.pow(-1, sign) * mantissaValue * Math.pow(2, -6);
+                return {
+                    sign,
+                    exponent: exponentValue,
+                    mantissa: mantissaValue,
+                    value: value === -0 ? 0 : value,
+                    special: 'subnormal'
+                };
+            } else { // Normal number
+                const bias = 7; // bias = 2^(k-1) - 1 = 2^3 - 1 = 7
+                const value = Math.pow(-1, sign) * (1 + mantissaValue) * Math.pow(2, exponentValue - bias);
+                return {
+                    sign,
+                    exponent: exponentValue,
+                    mantissa: mantissaValue,
+                    value,
+                    special: null
+                };
+            }
+        };
+
+        const unsigned = getUnsignedValue();
+        const signed = getSignedValue();
+        const minifloat = getMinifloatValue();
+
+        return (
+            <div className="bit-widget-container">
+                <h2>8-bit Binary Explorer</h2>
+                
+                <div className="bit-container">
+                    {bits.map((bit, index) => (
+                        <div key={index}>
+                            <div 
+                                className={`bit-cell ${bit === 1 ? 'one' : 'zero'}`}
+                                onClick={() => toggleBit(index)}
+                            >
+                                {bit}
+                            </div>
+                            <div className="bit-index">
+                                {7 - index}
+                            </div>
+                        </div>
+                    ))}
+                </div>
+
+                <div className="interpretation">
+                    <h3>Unsigned Integer (0 to 255)</h3>
+                    <div className="value-display">{unsigned.value}</div>
+                    {unsigned.terms.length > 0 && (
+                        <div className="math-expr">
+                            {unsigned.terms.join(' + ')} = {unsigned.value}
+                        </div>
+                    )}
+                </div>
+
+                <div className="interpretation">
+                    <h3>Signed Integer (-128 to 127)</h3>
+                    <div className="value-display">{signed.value}</div>
+                    {signed.terms.length > 0 && (
+                        <div className="math-expr">
+                            {signed.terms.join(' + ')} = {signed.value}
+                        </div>
+                    )}
+                    {bits[0] === 1 && (
+                        <div className="note">
+                            Sign bit is 1, so this represents a negative number in two's complement format.
+                            The value starts at -128 (−2^7) and adds the positive contributions.
+                        </div>
+                    )}
+                </div>
+
+                <div className="interpretation">
+                    <h3>8-bit Minifloat (1-4-3 format)</h3>
+                    
+                    <div className="minifloat-parts">
+                        <div className="minifloat-part sign-part">
+                            <strong>Sign</strong><br/>
+                            Bit 7: {bits[0]}<br/>
+                            {bits[0] === 0 ? 'Positive' : 'Negative'}
+                        </div>
+                        <div className="minifloat-part exponent-part">
+                            <strong>Exponent</strong><br/>
+                            Bits 6-3: {bits.slice(1, 5).join('')}<br/>
+                            Value: {minifloat.exponent}
+                        </div>
+                        <div className="minifloat-part mantissa-part">
+                            <strong>Mantissa</strong><br/>
+                            Bits 2-0: {bits.slice(5, 8).join('')}<br/>
+                            Value: {minifloat.mantissa.toFixed(3)}
+                        </div>
+                    </div>
+
+                    <div className="value-display">
+                        {minifloat.special ? (
+                            minifloat.special === 'NaN' ? 'NaN' :
+                            minifloat.special === 'infinity' ? (minifloat.sign === 0 ? '+∞' : '−∞') :
+                            minifloat.value.toFixed(10).replace(/\.?0+$/, '')
+                        ) : (
+                            minifloat.value.toFixed(10).replace(/\.?0+$/, '')
+                        )}
+                    </div>
+
+                    {minifloat.special && (
+                        <div className="special-case">
+                            <strong>Special case: {minifloat.special}</strong><br/>
+                            {minifloat.special === 'infinity' && 
+                                'All exponent bits are 1 and mantissa is 0, representing infinity.'}
+                            {minifloat.special === 'NaN' && 
+                                'All exponent bits are 1 and mantissa is non-zero, representing Not-a-Number.'}
+                            {minifloat.special === 'subnormal' && 
+                                `All exponent bits are 0, representing a subnormal number: (−1)^${minifloat.sign} × 0.${bits.slice(5, 8).join('')} × 2^−6`}
+                        </div>
+                    )}
+
+                    {!minifloat.special && (
+                        <div className="math-expr">
+                            (−1)^{minifloat.sign} × (1 + {minifloat.mantissa.toFixed(3)}) × 2^({minifloat.exponent} − 7) = {minifloat.value.toFixed(10).replace(/\.?0+$/, '')}
+                        </div>
+                    )}
+
+                    <div className="note">
+                        This minifloat uses 1 sign bit, 4 exponent bits (bias=7), and 3 mantissa bits.
+                        It can represent ±0, ±∞, NaN, subnormals, and normalized numbers from ±2^−6 to ±240.
+                    </div>
+                </div>
+            </div>
+        );
+    }
+
+    ReactDOM.render(<BitWidget />, document.getElementById('bit-widget-root'));
+</script>
