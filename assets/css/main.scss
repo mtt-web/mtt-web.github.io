@@ -30,6 +30,12 @@ img {
     max-width: 100%;
 }
 
+.author__avatar img {
+  opacity: 1 !important;
+  filter: none !important;
+  transition: none !important;
+}
+
 .author__avatar img:hover {
   opacity: 1 !important;
   filter: none !important;
