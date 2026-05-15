@@ -30,17 +30,12 @@ img {
     max-width: 100%;
 }
 
-img.u-photo {
+.sidebar,
+.sidebar.sticky,
+.sidebar * {
   opacity: 1 !important;
   filter: none !important;
-  transition: none !important;
+  mix-blend-mode: normal !important;
 }
-
-img.u-photo:hover {
-  opacity: 1 !important;
-  filter: none !important;
-}
-
-
 
 
