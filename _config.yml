@@ -18,14 +18,14 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: Václav Rozhoň's page
-email: vaclavrozhon@gmail.com
+title: Ing. Martin Timothy Timko page
+email: martin.timko@aol.com
 description: >- # this means to ignore newlines until "baseurl:"
-  Personal webpage of Václav Rozhoň
+  Personal webpage of Martin Timothy Timko
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
-github_username:  vaclavrozhon
-repository: vaclavrozhon/vaclavrozhon.github.io
+github_username:  indicatrix-git
+repository: mtt-web/mtt-web.github.io
 
 # Build settings
 # theme: minimal-mistakes-jekyll
@@ -42,17 +42,17 @@ kramdown:
 site.locale: en-GB
 
 author:
-  name: Václav Rozhoň
+  name: Martin Timothy Timko
   avatar: "/assets/images/photos/my-photo.png"
-  bio: "I'm a computer scientist. "
-  location: Prague, Czech Republic
+  bio: "I'm a freelance programmer."
+  location: Kosice, Slovak Republic
   links:
-    - label: "[name][surname]@gmail.com"
+    - label: "[name][surname]@aol.com"
       icon: "fas fa-fw fa-envelope"
       url: "mailto:"
-    - label: "YouTube – Polylog"
+    - label: "YouTube – Martin Timothy Timko"
       icon: "fab fa-fw fa-youtube"
-      url: "https://www.youtube.com/@polylogcs"
+      url: "https://www.youtube.com/@martin-timothy-timko"
 
 date_format: "%B %Y"
 
@@ -121,7 +121,7 @@ include:
   - widgets/dist/
 
 footer:
-  content: " Powered by Jekyll & Minimal Mistakes. Photo © Tomáš Princ, MFF UK"
+  content: " Powered by Jekyll & Minimal Mistakes."
 
 
 zoom: true
