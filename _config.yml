@@ -43,7 +43,7 @@ site.locale: en-GB
 
 author:
   name: Václav Rozhoň
-  avatar: "/assets/images/photos/photo_small.jpg"
+  avatar: "/assets/images/photos/my-photo.png"
   bio: "I'm a computer scientist. "
   location: Prague, Czech Republic
   links:
