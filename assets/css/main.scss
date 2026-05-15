@@ -30,9 +30,10 @@ img {
     max-width: 100%;
 }
 
-.author__avatar img.u-photo:hover {
+img.u-photo {
   opacity: 1 !important;
   filter: none !important;
+  transition: none !important;
 }
 
 
