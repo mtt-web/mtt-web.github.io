@@ -47,12 +47,45 @@ author:
   bio: "I'm a freelance programmer."
   location: Kosice, Slovak Republic
   links:
-    - label: "[name][surname]@aol.com"
+    - label: "[name].[surname]@aol.com"
       icon: "fas fa-fw fa-envelope"
       url: "mailto:"
-    - label: "YouTube – Martin Timothy Timko"
-      icon: "fab fa-fw fa-youtube"
-      url: "https://www.youtube.com/@martin-timothy-timko"
+      
+  - label: "MTT Web"
+    icon: "fas fa-fw fa-globe"
+    url: "http://mttweb.aspfree.cz"
+    target: "_blank"
+    rel: "noopener noreferrer"
+    
+  - label: "Indicatrix Blog"
+    icon: "fas fa-fw fa-blog"
+    url: "https://indicatrixblog.blogspot.com/"
+    target: "_blank"
+    rel: "noopener noreferrer"
+    
+  - label: "Indicatrix Tech Blog"
+    icon: "fas fa-fw fa-compass"
+    url: "http://indicatrix.wz.cz:8080/"
+    target: "_blank"
+    rel: "noopener noreferrer"
+    
+  - label: "SoundCloud"
+    icon: "fab fa-fw fa-soundcloud"
+    url: "https://soundcloud.com/martin-timothy-timko"
+    target: "_blank"
+    rel: "noopener noreferrer"
+    
+  - label: "GitHub – indicatrix-git"
+    icon: "fab fa-fw fa-github"
+    url: "https://github.com/indicatrix-git"
+    target: "_blank"
+    rel: "noopener noreferrer"
+    
+  - label: "YouTube – Martin Timothy Timko"
+    icon: "fab fa-fw fa-youtube"
+    url: "https://www.youtube.com/@martin-timothy-timko"
+    target: "_blank"
+    rel: "noopener noreferrer"
 
 date_format: "%B %Y"
 
