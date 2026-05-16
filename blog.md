@@ -110,10 +110,6 @@ permalink: "/blog/"
           </p>
 
           <p>
-            <strong>Channel:</strong> @martin-timothy-timko
-          </p>
-
-          <p>
             <strong>Powered by:</strong> WordPress & YouTube
           </p>
 
