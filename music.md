@@ -209,7 +209,7 @@ Video performances recorded with:<br>
 </video>
 
 Backing track:
-[YouTube Link](https://www.youtube.com/watch?v=HKfEtmi2qBw){: target="_blank" }
+[YouTube Link](https://www.youtube.com/watch?v=HKfEtmi2qBw){: target="_blank" }<br>
 
 <strong>Smooth Jazz Improvisation</strong>
 
