@@ -8,14 +8,12 @@ toc_label: "Blog"
 toc_icon: "blog"
 classes: wide
 ---
-## Writer blog, diary blog, audio/video blog
-
 <section class="page__content">
   <header>
     <p class="page__lead">
     </p>
   </header>
-
+### Writer blog, diary blog, audio/video blog
   <div class="feature__wrapper">
 
     <!-- Writer Blog -->
