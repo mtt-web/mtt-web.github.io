@@ -3,13 +3,23 @@
 ---
 
 @import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
-
-// Override link color (must be defined BEFORE main partials)
-$link-color: #0092CA;
-$link-color-hover: mix(#000, $link-color, 25%);
-$link-color-visited: mix(#fff, $link-color, 25%);
-
 @import "minimal-mistakes"; // main partials
+
+// Override link colors
+a,
+a:visited,
+.page__content a,
+.page__content a:visited,
+.sidebar a,
+.sidebar a:visited {
+  color: #0092CA;
+}
+
+a:hover,
+.page__content a:hover,
+.sidebar a:hover {
+  color: #006d96;
+}
 
 img {
     max-width: 100%;
