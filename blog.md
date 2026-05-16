@@ -6,9 +6,7 @@ permalink: "/blog/"
 
 <section class="page__content">
   <header>
-    <h1 id="blog-vlog-diary">Blog / Vlog / Diary</h1>
     <p class="page__lead">
-      Writer Blog, Video Blog, Personal Diary
     </p>
   </header>
 
@@ -31,11 +29,6 @@ permalink: "/blog/"
           <p>
             This blog contains articles from several disciplines including
             computer graphics, IT, science and technology.
-          </p>
-
-          <p>
-            Articles are written in a free educational style and are primarily
-            focused on self-learning, experimentation and personal opinions.
           </p>
 
           <p>
@@ -74,11 +67,6 @@ permalink: "/blog/"
           </p>
 
           <p>
-            Articles are written for educational and archival purposes
-            using personal research and literature references.
-          </p>
-
-          <p>
             <a href="http://indicatrix.wz.cz:8080"
                target="_blank"
                class="btn btn--primary">
@@ -114,11 +102,6 @@ permalink: "/blog/"
           </p>
 
           <p>
-            The channel contains educational and experimental videos,
-            without commercial propaganda or targeted advertising.
-          </p>
-
-          <p>
             <a href="https://www.youtube.com/@martin-timothy-timko"
                target="_blank"
                class="btn btn--primary">
@@ -127,7 +110,7 @@ permalink: "/blog/"
           </p>
 
           <p>
-            <strong>Channel:</strong> @Indicatrix
+            <strong>Channel:</strong> @martin-timothy-timko
           </p>
 
           <p>
