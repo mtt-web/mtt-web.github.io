@@ -28,7 +28,7 @@ kramdown:
 locale: "en-GB"
 
 author:
-  name: "Martin Timothy Timko"
+  # name: "Martin Timothy Timko"
   avatar: "/assets/images/photos/my-photo.png"
   bio: "I'm a freelance programmer."
   location: "Kosice, Slovak Republic"
