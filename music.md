@@ -8,10 +8,6 @@ toc_label: "Sections"
 toc_icon: "music"
 classes: wide
 ---
-
-# Music & Guitar
-*Jazz ballads, folk jazz, blues*
-
 In this section are music compositions recorded during free time as a hobby.  
 The folk jazz recordings were played on an Epiphone Les Paul Standard and Tension nylon acoustic guitar.  
 Jazz and blues recordings were performed on an Ibanez AF75 jazz guitar.
