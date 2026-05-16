@@ -5,19 +5,13 @@
 @import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
 @import "minimal-mistakes"; // main partials
 
-// Override link colors
-a,
-a:visited,
-.page__content a,
-.page__content a:visited,
-.sidebar a,
-.sidebar a:visited {
+// Override link colors - only on home page (index.md)
+.home-page a,
+.home-page a:visited {
   color: #0092CA !important;
 }
 
-a:hover,
-.page__content a:hover,
-.sidebar a:hover {
+.home-page a:hover {
   color: #006d96 !important;
 }
 
