@@ -184,6 +184,24 @@ Video performances recorded with:
 - VOX AC4 TV combo
 - Nikon D5100 camera
 
+### Jazz Standard: Over the Rainbow
+
+<video controls width="100%">
+  <source src="{{ '/assets/video-archive/OverTheRainbow.mp4' | relative_url }}" type="video/mp4">
+</video>
+
+### Jazz Standard: The Girl From Ipanema
+
+<video controls width="100%">
+  <source src="{{ '/assets/video-archive/TheGirlFromIpanema.mp4' | relative_url }}" type="video/mp4">
+</video>
+
+### Jazz Standard: Nature Boy
+
+<video controls width="100%">
+  <source src="{{ '/assets/video-archive/NatureBoy.mp4' | relative_url }}" type="video/mp4">
+</video>
+
 ### Blues Improvisation with Backing Track
 
 <video controls width="100%">
@@ -196,7 +214,13 @@ Backing track:
 ### Smooth Jazz Improvisation
 
 <video controls width="100%">
-  <source src="assets/video-archive/SmoothJazzImprovisationWithBackingTrack.mp4" type="video/mp4">
+  <source src="{{ '/assets/video-archive/SmoothJazzImprovisationWithBackingTrack.mp4' | relative_url }}" type="video/mp4">
+</video>
+
+### Folk, POP, Solos
+
+<video controls width="100%">
+  <source src="{{ '/assets/video-archive/FolkPopSolos.mp4' | relative_url }}" type="video/mp4">
 </video>
 
 </div>
