@@ -3,3 +3,5 @@ main:
     url: "/"
   - title: "Blog"
     url: "/blog/"
+  - title: "Music & Guitar"
+    url: "/music/"
