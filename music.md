@@ -184,7 +184,7 @@ Video performances recorded with:<br>
 - VOX AC4 TV combo<br>
 - Nikon D5100 camera<br>
 <br>
-### **Jazz Standard: Over the Rainbow**
+**Jazz Standard: Over the Rainbow**
 
 <video controls width="100%">
   <source src="{{ '/assets/video-archive/OverTheRainbow.mp4' | relative_url }}" type="video/mp4">
