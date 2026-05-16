@@ -183,8 +183,8 @@ Video performances recorded with:<br>
 - MXL 990 condenser microphone<br>
 - VOX AC4 TV combo<br>
 - Nikon D5100 camera<br>
-
-### Jazz Standard: Over the Rainbow
+<br>
+### **Jazz Standard: Over the Rainbow**
 
 <video controls width="100%">
   <source src="{{ '/assets/video-archive/OverTheRainbow.mp4' | relative_url }}" type="video/mp4">
