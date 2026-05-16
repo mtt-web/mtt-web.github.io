@@ -17,6 +17,8 @@ img {
 
 // Increase main content width by 25%
 .page {
+    font-size: 0.9em;
+    
     @media (min-width: 80em) {
         max-width: 1250px; // 1000px * 1.25
     }
