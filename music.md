@@ -184,25 +184,25 @@ Video performances recorded with:<br>
 - VOX AC4 TV combo<br>
 - Nikon D5100 camera<br>
 <br>
-**Jazz Standard: Over the Rainbow**
+<strong>Jazz Standard: Over the Rainbow</strong>
 
 <video controls width="100%">
   <source src="{{ '/assets/video-archive/OverTheRainbow.mp4' | relative_url }}" type="video/mp4">
 </video>
 
-### Jazz Standard: The Girl From Ipanema
+<strong>Jazz Standard: The Girl From Ipanema</strong>
 
 <video controls width="100%">
   <source src="{{ '/assets/video-archive/TheGirlFromIpanema.mp4' | relative_url }}" type="video/mp4">
 </video>
 
-### Jazz Standard: Nature Boy
+<strong>Jazz Standard: Nature Boy</strong>
 
 <video controls width="100%">
   <source src="{{ '/assets/video-archive/NatureBoy.mp4' | relative_url }}" type="video/mp4">
 </video>
 
-### Blues Improvisation with Backing Track
+<strong>Blues Improvisation with Backing Track</strong>
 
 <video controls width="100%">
   <source src="{{ '/assets/video-archive/BluesImprovisationWithBackingTrack.mp4' | relative_url }}" type="video/mp4">
@@ -211,13 +211,13 @@ Video performances recorded with:<br>
 Backing track:
 [YouTube Link](https://www.youtube.com/watch?v=HKfEtmi2qBw){: target="_blank" }
 
-### Smooth Jazz Improvisation
+<strong>Smooth Jazz Improvisation</strong>
 
 <video controls width="100%">
   <source src="{{ '/assets/video-archive/SmoothJazzImprovisationWithBackingTrack.mp4' | relative_url }}" type="video/mp4">
 </video>
 
-### Folk, POP, Solos
+<strong>Folk, POP, Solos</strong>
 
 <video controls width="100%">
   <source src="{{ '/assets/video-archive/FolkPopSolos.mp4' | relative_url }}" type="video/mp4">
