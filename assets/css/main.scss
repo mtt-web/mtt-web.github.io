@@ -5,16 +5,6 @@
 @import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
 @import "minimal-mistakes"; // main partials
 
-// Override link colors - only on home page (index.md)
-.home-page a,
-.home-page a:visited {
-  color: #0092CA !important;
-}
-
-.home-page a:hover {
-  color: #006d96 !important;
-}
-
 img {
     max-width: 100%;
     height: auto;
