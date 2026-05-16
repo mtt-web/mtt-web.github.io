@@ -40,4 +40,37 @@ img {
   mix-blend-mode: normal !important;
 }
 
+.feature__wrapper {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.archive__item {
+  height: 100%;
+  border-radius: 12px;
+  border: 1px solid #e5e5e5;
+  padding: 1.5rem;
+  background: #ffffff;
+  transition: all 0.25s ease;
+}
+
+.archive__item:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+.archive__item-title {
+  margin-bottom: 1rem;
+}
+
+.archive__item-excerpt {
+  color: #666;
+  font-size: 0.95rem;
+}
+
+.btn--primary {
+  margin-top: 1rem;
+}
 
