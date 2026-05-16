@@ -6,7 +6,9 @@ author_profile: true
 toc: true
 toc_label: "About Me"
 toc_icon: "id-card"
-classes: wide
+classes:
+  - wide
+  - home-page
 ---
 
 I am a freelance programmer. Graduated from the [Technical University of Kosice](https://kmti.fei.tuke.sk/) &#124; Faculty of Electrical Engineering and Informatics &#124; Applied Informatics - Computer modeling. In my free time, I create computer games, play the guitar and read books. My [resume in EN](/assets/documents/CV_EN_martin_timko.pdf), [resume in SK](/assets/documents/CV_SK_martin_timko.pdf).<br>
