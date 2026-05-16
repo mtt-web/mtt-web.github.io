@@ -12,13 +12,13 @@ a:visited,
 .page__content a:visited,
 .sidebar a,
 .sidebar a:visited {
-  color: #0092CA;
+  color: #0092CA !important;
 }
 
 a:hover,
 .page__content a:hover,
 .sidebar a:hover {
-  color: #006d96;
+  color: #006d96 !important;
 }
 
 img {
