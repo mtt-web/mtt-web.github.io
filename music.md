@@ -4,7 +4,7 @@ title: "Music & Guitar"
 permalink: /music/
 author_profile: true
 toc: true
-toc_label: "Sections"
+toc_label: "Music & Guitar"
 toc_icon: "music"
 classes: wide
 ---
