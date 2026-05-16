@@ -176,13 +176,13 @@ src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/53
 
 ## Video
 
-Video performances recorded with:
+Video performances recorded with:<br>
 
-- Ibanez AF75
-- Focusrite Scarlett 2i2
-- MXL 990 condenser microphone
-- VOX AC4 TV combo
-- Nikon D5100 camera
+- Ibanez AF75<br>
+- Focusrite Scarlett 2i2<br>
+- MXL 990 condenser microphone<br>
+- VOX AC4 TV combo<br>
+- Nikon D5100 camera<br>
 
 ### Jazz Standard: Over the Rainbow
 
