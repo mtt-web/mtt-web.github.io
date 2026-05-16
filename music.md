@@ -187,7 +187,7 @@ Video performances recorded with:
 ### Blues Improvisation with Backing Track
 
 <video controls width="100%">
-  <source src="/images/portfolio/video-archive/BluesImprovisationWithBackingTrack.mp4" type="video/mp4">
+  <source src="assets/video-archive/BluesImprovisationWithBackingTrack.mp4" type="video/mp4">
 </video>
 
 Backing track:
@@ -196,7 +196,7 @@ Backing track:
 ### Smooth Jazz Improvisation
 
 <video controls width="100%">
-  <source src="/images/portfolio/video-archive/SmoothJazzImprovisationWithBackingTrack.mp4" type="video/mp4">
+  <source src="assets/video-archive/SmoothJazzImprovisationWithBackingTrack.mp4" type="video/mp4">
 </video>
 
 </div>
