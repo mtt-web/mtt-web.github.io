@@ -2,6 +2,11 @@
 layout: single
 title: Blog
 permalink: "/blog/"
+author_profile: true
+toc: true
+toc_label: "Blog"
+toc_icon: "blog"
+classes: wide
 ---
 
 <section class="page__content">
