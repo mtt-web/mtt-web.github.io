@@ -187,7 +187,7 @@ Video performances recorded with:
 ### Blues Improvisation with Backing Track
 
 <video controls width="100%">
-  <source src="assets/video-archive/BluesImprovisationWithBackingTrack.mp4" type="video/mp4">
+  <source src="{{ '/assets/video-archive/BluesImprovisationWithBackingTrack.mp4' | relative_url }}" type="video/mp4">
 </video>
 
 Backing track:
