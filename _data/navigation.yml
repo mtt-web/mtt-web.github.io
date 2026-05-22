@@ -3,6 +3,8 @@ main:
     url: "/"
   - title: "Blog"
     url: "/blog/"
+  - title: "Games"
+    url: "/games/"
   - title: "Music & Guitar"
     url: "/music/"
   - title: "Publications"
