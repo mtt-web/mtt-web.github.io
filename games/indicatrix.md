@@ -12,9 +12,23 @@ The game Indicatrix (working title) is in the development stage. The programming
 
 ### 📷 Development Screenshot
 
-<p align="center">
-  <img src="/games/img/Indicatrix01.png" alt="Indicatrix Screenshot" width="800">
-</p>
+<div style="
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+">
+
+  <!-- First Row -->
+  <img src="/games/img/Indicatrix01.png" width="100%" alt="Indicatrix 01">
+  <img src="/games/img/Indicatrix02.png" width="100%" alt="Indicatrix 02">
+
+  <!-- Second Row -->
+  <img src="/games/img/Indicatrix03.png" width="100%" alt="Indicatrix 03">
+  
+  <!-- Empty Space -->
+  <div></div>
+
+</div>
 
 ### 📅 Development Timeline
 
