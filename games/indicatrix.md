@@ -24,9 +24,7 @@ The game Indicatrix (working title) is in the development stage. The programming
 
   <!-- Second Row -->
   <img src="/games/img/Indicatrix03.png" width="100%" alt="Indicatrix 03">
-  
-  <!-- Empty Space -->
-  <div></div>
+  <img src="/games/img/Indicatrix04.png" width="100%" alt="Indicatrix 04">
 
 </div>
 
