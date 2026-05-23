@@ -13,7 +13,7 @@ The game Indicatrix (working title) is in the development stage. The programming
 ### 📷 Development Screenshot
 
 <p align="center">
-  <img src="/games/img/indicatrix_01.png" alt="Indicatrix Screenshot" width="800">
+  <img src="/games/img/Indicatrix01.png" alt="Indicatrix Screenshot" width="800">
 </p>
 
 ### 📅 Development Timeline
