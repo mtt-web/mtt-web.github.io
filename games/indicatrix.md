@@ -32,7 +32,7 @@ The game Indicatrix (working title) is in the development stage. The programming
 
 🎮 **Development Log: Indicatrix | Tycoon Game**
 
-## 🗓️ 16 June 2026
+🗓️ 16 June 2026
 
 ➤ 🏠 Created the **Main Menu**
 ➤ 🎮 Created the **Game Menu**
@@ -41,7 +41,7 @@ The game Indicatrix (working title) is in the development stage. The programming
 
 ---
 
-## 🗓️ 14 June 2026
+🗓️ 14 June 2026
 
 ➤ 📊 Created a business policy system and pricing relationship management
 ➤ ⛰️ Created a procedural terrain generator
@@ -49,7 +49,7 @@ The game Indicatrix (working title) is in the development stage. The programming
 
 ---
 
-## 🗓️ 06 June 2026
+🗓️ 06 June 2026
 
 ➤ 🚆 Added additional trains and vehicles beyond the basic types
 ➤ ⌨️ Fixed an issue with the **Esc** key after closing UI windows
@@ -61,7 +61,7 @@ The game Indicatrix (working title) is in the development stage. The programming
 
 ---
 
-## 🗓️ 03 June 2026
+🗓️ 03 June 2026
 
 ➤ 🐞 Fixed UI error-state handling for error messages
 ➤ 🔘 Fixed enabled/disabled states for **Depot Rail** and **Depot Road** buttons
@@ -69,7 +69,7 @@ The game Indicatrix (working title) is in the development stage. The programming
 
 ---
 
-## 🗓️ 25 May 2026
+🗓️ 25 May 2026
 
 ➤ 🎯 Reworked the positioning system to automatically center all UI windows
 ➤ 🎥 Reworked the camera system, including zoom functionality and movement constraints
@@ -77,13 +77,13 @@ The game Indicatrix (working title) is in the development stage. The programming
 
 ---
 
-## 🗓️ 23 May 2026
+🗓️ 23 May 2026
 
 ➤ 💰 Implemented a business transaction system for vehicles
 
 ---
 
-## 🗓️ 22 May 2026
+🗓️ 22 May 2026
 
 ➤ 🖥️ Expanded the **Factory Status UI**
 ➤ 🏭 Prepared **Factory** and **Train** structures for the upcoming **Station** implementation
@@ -91,7 +91,7 @@ The game Indicatrix (working title) is in the development stage. The programming
 
 ---
 
-## 🗓️ 20 May 2026
+🗓️ 20 May 2026
 
 ➤ 🛣️ Expanded the **Road UI** and **Road Depot UI** for the vehicle system
 ➤ 🏭 Added a hidden **Factory UI** for factory generation
@@ -99,14 +99,14 @@ The game Indicatrix (working title) is in the development stage. The programming
 
 ---
 
-## 🗓️ 17 May 2026
+🗓️ 17 May 2026
 
 ➤ 🪟 Fixed the UI window system, including dragging windows via the title bar
 ➤ 🚉 Expanded the **Rail Depot UI** with additional interface elements
 
 ---
 
-## 🗓️ 12 May 2026
+🗓️ 12 May 2026
 
 ➤ 🚧 Fixed train jams caused by accidental track tile deletion
 ➤ 🏢 Created the **Depot UI** and connected it to the game logic
@@ -114,7 +114,7 @@ The game Indicatrix (working title) is in the development stage. The programming
 
 ---
 
-## 🗓️ 08 May 2026
+🗓️ 08 May 2026
 
 ➤ 🚆 Reworked the railway system from center-tile logic to a waypoint-based system, including railway switches
 ➤ ↩️ Improved track curves from rigid 90° turns to smooth 45° angles
@@ -123,7 +123,7 @@ The game Indicatrix (working title) is in the development stage. The programming
 
 ---
 
-## 🗓️ 05 May 2026
+🗓️ 05 May 2026
 
 ➤ 🚂 Reworked the train movement system from **Follow-Leader** logic to a distance-based path system
 ➤ 🏠 Fixed trains returning to depots only after completing their routes instead of during travel
@@ -131,14 +131,14 @@ The game Indicatrix (working title) is in the development stage. The programming
 
 ---
 
-## 🗓️ 02 May 2026
+🗓️ 02 May 2026
 
 ➤ 🚆 Added core functionality for trains, locomotives, and wagons
 ➤ ✨ Fixed locomotive flickering and wagon duplication issues
 
 ---
 
-## 🗓️ 20 April 2026
+🗓️ 20 April 2026
 
 ➤ ⚡ Optimized performance using parallel processing (**TPL**)
 ➤ 🗺️ Refactored the entire codebase
@@ -147,7 +147,7 @@ The game Indicatrix (working title) is in the development stage. The programming
 
 ---
 
-## 🗓️ 17 April 2026
+🗓️ 17 April 2026
 
 ➤ 🚧 Added a construction system for railway lines, tracks, stations, and depots
 ➤ 🗺️ Implemented shortest-route railway pathfinding using the **A*** algorithm
@@ -156,7 +156,7 @@ The game Indicatrix (working title) is in the development stage. The programming
 
 ---
 
-## 🗓️ 24 February 2026
+🗓️ 24 February 2026
 
 ➤ ⚡ Terrain Optimization III – implemented a new terrain collapse algorithm
 ➤ 🗺️ Adjusted terrain region functionality to 20×20 sectors
@@ -165,7 +165,7 @@ The game Indicatrix (working title) is in the development stage. The programming
 
 ---
 
-## 🗓️ 04 February 2026
+🗓️ 04 February 2026
 
 ➤ ⚡ Terrain Optimization II
 ➤ 🗺️ Adjusted terrain region functionality to 20×20 sectors
@@ -174,32 +174,32 @@ The game Indicatrix (working title) is in the development stage. The programming
 
 ---
 
-## 🗓️ 17 January 2026
+🗓️ 17 January 2026
 
 ➤ ⚡ Terrain Optimization I
 ➤ 🗺️ Added terrain region functionality
 
 ---
 
-## 🗓️ 19 September 2025
+🗓️ 19 September 2025
 
 ➤ 🧩 Implemented the terrain decomposition system
 
 ---
 
-## 🗓️ 18 July 2025
+🗓️ 18 July 2025
 
 ➤ 🔲 Added face snapping
 
 ---
 
-## 🗓️ 15 July 2025
+🗓️ 15 July 2025
 
 ➤ 🔺 Added vertex snapping
 
 ---
 
-## 🗓️ 17 March 2025
+🗓️ 17 March 2025
 
 ➤ 🗺️ Created base terrain coordinates aligned with the map
 ➤ 🔼🔽 Added terrain height adjustment for individual vertices
