@@ -32,119 +32,175 @@ The game Indicatrix (working title) is in the development stage. The programming
 
 🎮 **Development Log: Indicatrix | Tycoon Game**
 
+## 🗓️ 16 June 2026
+
+➤ 🏠 Created the **Main Menu**
+➤ 🎮 Created the **Game Menu**
+➤ 💾 Improved the **Load Game** and **Save Game** functions
+➤ 📑 Created a UI window for the **Annual Financial Closing Report**
+
 ---
 
-➤ 🗓️ **23 May 2026**
-➤ 💰 Created a business transaction system for **Vehicles**
+## 🗓️ 14 June 2026
+
+➤ 📊 Created a business policy system and pricing relationship management
+➤ ⛰️ Created a procedural terrain generator
+➤ 💬 Added labels displayed above successfully completed business transactions
 
 ---
 
-➤ 🗓️ **22 May 2026**
+## 🗓️ 06 June 2026
+
+➤ 🚆 Added additional trains and vehicles beyond the basic types
+➤ ⌨️ Fixed an issue with the **Esc** key after closing UI windows
+➤ ⏰ Added in-game time and a construction cost pricing system
+➤ 🏭 Added a toggle for the **Factories UI** and included all factory types beyond the basic ones
+➤ 👥 Added a toggle for the **Staff Management UI**, including employee recruitment and a complete factory employee overview
+➤ 🛡️ Added handling for ongoing error states during gameplay interactions
+➤ 🏷️ Added percentage-based construction progress labels for factories and price labels for purchase and sale transactions
+
+---
+
+## 🗓️ 03 June 2026
+
+➤ 🐞 Fixed UI error-state handling for error messages
+➤ 🔘 Fixed enabled/disabled states for **Depot Rail** and **Depot Road** buttons
+➤ 🚉 Fixed station name display for **Station Rail** and **Station Road**
+
+---
+
+## 🗓️ 25 May 2026
+
+➤ 🎯 Reworked the positioning system to automatically center all UI windows
+➤ 🎥 Reworked the camera system, including zoom functionality and movement constraints
+➤ 🔍 Created dedicated camera zoom control buttons
+
+---
+
+## 🗓️ 23 May 2026
+
+➤ 💰 Implemented a business transaction system for vehicles
+
+---
+
+## 🗓️ 22 May 2026
+
 ➤ 🖥️ Expanded the **Factory Status UI**
 ➤ 🏭 Prepared **Factory** and **Train** structures for the upcoming **Station** implementation
-➤ 💰 Created a business transaction system for **Trains**
+➤ 🚆💰 Implemented a business transaction system for trains
 
 ---
 
-➤ 🗓️ **20 May 2026**
+## 🗓️ 20 May 2026
+
 ➤ 🛣️ Expanded the **Road UI** and **Road Depot UI** for the vehicle system
 ➤ 🏭 Added a hidden **Factory UI** for factory generation
 ➤ 🔄 Added full **360° factory rotation** support
 
 ---
 
-➤ 🗓️ **17 May 2026**
+## 🗓️ 17 May 2026
+
 ➤ 🪟 Fixed the UI window system, including dragging windows via the title bar
-➤ 🚉 Expanded the **Rail Depot UI** panel with additional interface elements
+➤ 🚉 Expanded the **Rail Depot UI** with additional interface elements
 
 ---
 
-➤ 🗓️ **12 May 2026**
-➤ 🚧 Fixed train jamming caused by accidental tile deletion
-➤ 🏢 Created the **Depot UI** and connected its functionality to the game logic
+## 🗓️ 12 May 2026
+
+➤ 🚧 Fixed train jams caused by accidental track tile deletion
+➤ 🏢 Created the **Depot UI** and connected it to the game logic
 ➤ ⛰️ Tested inclined railway tracks
 
 ---
 
-➤ 🗓️ **08 May 2026**
+## 🗓️ 08 May 2026
+
 ➤ 🚆 Reworked the railway system from center-tile logic to a waypoint-based system, including railway switches
 ➤ ↩️ Improved track curves from rigid 90° turns to smooth 45° angles
-➤ ⛰️ Improved terrain elevation transitions with natural terrain slope angles
+➤ ⛰️ Improved terrain elevation transitions with more natural slope angles
 ➤ 🔀 Expanded intersection direction functionality to support intermediate 45° directions
 
 ---
 
-➤ 🗓️ **05 May 2026**
-➤ 🚂 Reworked the train movement system from “Follow-Leader” logic to a distance-based path system
-➤ 🏠 Fixed trains returning to the depot only after route completion instead of during travel
-➤ 🔄 Fixed train turning at stations without breaking movement logic
+## 🗓️ 05 May 2026
+
+➤ 🚂 Reworked the train movement system from **Follow-Leader** logic to a distance-based path system
+➤ 🏠 Fixed trains returning to depots only after completing their routes instead of during travel
+➤ 🔄 Fixed train turning behavior at stations without breaking movement logic
 
 ---
 
-➤ 🗓️ **02 May 2026**
+## 🗓️ 02 May 2026
+
 ➤ 🚆 Added core functionality for trains, locomotives, and wagons
 ➤ ✨ Fixed locomotive flickering and wagon duplication issues
 
 ---
 
-➤ 🗓️ **20 April 2026**
-➤ ⚡ Optimized performance using parallel processing (TPL)
+## 🗓️ 20 April 2026
+
+➤ ⚡ Optimized performance using parallel processing (**TPL**)
 ➤ 🗺️ Refactored the entire codebase
 ➤ 🖥️ Fixed game flow interruptions when switching maps
-➤ 🧩 Optimized handling of multiple trains and railway line interruptions
+➤ 🚉 Optimized handling of multiple trains and railway line interruptions
 
 ---
 
-➤ 🗓️ **17 April 2026**
-➤ 🛤️ Added a construction system for railway lines, tracks, stations, and depots
-➤ 🧭 Implemented shortest-route railway pathfinding using the **A*** algorithm
-➤ 🖥️ Added the ability to modify railway lines during gameplay
-➤ 🚉 Completed railway train simulation including train creation, deletion, departures, stopping, and depot returns
+## 🗓️ 17 April 2026
+
+➤ 🚧 Added a construction system for railway lines, tracks, stations, and depots
+➤ 🗺️ Implemented shortest-route railway pathfinding using the **A*** algorithm
+➤ 🛠️ Added the ability to modify railway lines during gameplay
+➤ 🚆 Completed railway train simulation, including train creation, deletion, departures, stops, and depot returns
 
 ---
 
-➤ 🗓️ **24 February 2026**
+## 🗓️ 24 February 2026
+
 ➤ ⚡ Terrain Optimization III – implemented a new terrain collapse algorithm
 ➤ 🗺️ Adjusted terrain region functionality to 20×20 sectors
 ➤ 🖥️ Added additional UI elements
-➤ 💾 Added a tile system including Load/Save functionality
+➤ 💾 Added a tile system, including Save/Load functionality
 
 ---
 
-➤ 🗓️ **04 February 2026**
+## 🗓️ 04 February 2026
+
 ➤ ⚡ Terrain Optimization II
 ➤ 🗺️ Adjusted terrain region functionality to 20×20 sectors
-➤ 🖌️ Added borders for map edges
-➤ 🔄 Merged **LevelUp** and **LevelDown** into a single function
+➤ 🖌️ Added map edge borders
+➤ 🔄 Merged **Level Up** and **Level Down** into a single function
 
 ---
 
-➤ 🗓️ **17 January 2026**
+## 🗓️ 17 January 2026
+
 ➤ ⚡ Terrain Optimization I
 ➤ 🗺️ Added terrain region functionality
 
 ---
 
-➤ 🗓️ **19 September 2025**
+## 🗓️ 19 September 2025
+
 ➤ 🧩 Implemented the terrain decomposition system
 
 ---
 
-➤ 🗓️ **18 July 2025**
+## 🗓️ 18 July 2025
+
 ➤ 🔲 Added face snapping
 
 ---
 
-➤ 🗓️ **15 July 2025**
+## 🗓️ 15 July 2025
+
 ➤ 🔺 Added vertex snapping
 
 ---
 
-➤ 🗓️ **17 March 2025**
+## 🗓️ 17 March 2025
+
 ➤ 🗺️ Created base terrain coordinates aligned with the map
 ➤ 🔼🔽 Added terrain height adjustment for individual vertices
-
-
-
-
 
