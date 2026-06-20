@@ -204,3 +204,6 @@ The game Indicatrix (working title) is in the development stage. The programming
 ➤ 🗺️ Created base terrain coordinates aligned with the map
 ➤ 🔼🔽 Added terrain height adjustment for individual vertices
 
+## Game Dev Blog: Indicatrix (working title)
+Link: [Indicatrix - Dev Blog](https://mtt-web.github.io/games/indicatrix-blog){:target="_blank"}
+
