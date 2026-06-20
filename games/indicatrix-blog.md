@@ -1,4 +1,4 @@
-\---
+---
 
 layout: single # splash, single
 
@@ -6,15 +6,13 @@ title: Moja hra
 
 permalink: "/games/indicatrix-blog/"
 
-author\_profile: true
+author_profile: true
 
 toc: true
 
 classes: wide
 
-\---
-
-
+---
 
 \## Game: Indicatrix (Working title)
 
