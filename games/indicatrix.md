@@ -28,9 +28,28 @@ The game Indicatrix (working title) is in the development stage. The programming
 
 </div>
 
+### 📷 Release Screenshot
+
+<div style="
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+">
+
+  <!-- First Row -->
+  <img src="/games/img/IndicatrixRelease01.png" width="100%" alt="Cargo Industry 01">
+  <img src="/games/img/IndicatrixRelease02.png" width="100%" alt="Cargo Industry 02">
+
+  <!-- Second Row -->
+  <img src="/games/img/IndicatrixRelease03.png" width="100%" alt="Cargo Industry 03">
+  <img src="/games/img/IndicatrixRelease04.png" width="100%" alt="Cargo Industry 04">
+
+</div>
+
+
 ### 📅 Development Timeline
 
-# 🎮 Development Log: **Indicatrix | Tycoon Game**
+# 🎮 Development Log: **Indicatrix | Cargo Industry**
 
 ## 🗓️ 21 August 2026
 
