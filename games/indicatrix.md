@@ -60,10 +60,12 @@ Link: [Indicatrix Studio - Game Blog](https://indicatrixstudio.github.io/){:targ
 
 ## 🗓️ 15 July 2026
 
-➤ 🎨 Created graphics using assets from the Asset Store and replaced dummy objects with final graphics
-➤ 🏙️ Set city names and adjusted label display
+➤ 🎨 Created graphics using assets from the Asset Store and replaced dummy objects with the final graphics
+➤ 🏙️ Set city names and adjusted label displays
+➤ 🌳 Added environmental objects (trees, rocks, and terrain patches)
+➤ 🌫️ Added fog and clouds
 ➤ 🎵 Added music and sound effects
-➤ 🏠 Reworked the **Main Menu** items
+➤ 🏠 Reworked the Main Menu items
 ➤ 💰 Set up the game's pricing economy
 ➤ 🧪 Tested the game
 
